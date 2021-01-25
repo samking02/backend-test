@@ -1,0 +1,17 @@
+<% layout('layout/boilerplate') -%>
+    <h1>SHOWING ALL TO-DOS</h1>
+    <a href="/todo/new">Add New TO-DO</a>
+    <ul>
+        <% for( todo of todoList){ %>
+            <li>
+                <%= todo.todo%>
+                    <a href="/todo/<%=todo._id%>">more detail</a>
+
+                    <a href="/todo/<%=todo._id%>/edit"><i class="fas fa-pen"></i></a>
+
+                    <form action="/todo/<%=todo._id%>?_method=DELETE" method="POST">
+                        <button><i class="fas fa-trash-alt"></i></button>
+                    </form>
+            </li>
+            <% } %>
+    </ul>

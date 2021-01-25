@@ -1,0 +1,10 @@
+<% layout('layout/boilerplate') -%>
+    <h1>
+        <%= todo.todo %>
+    </h1>
+
+    <a href="/todo/<%= todo._id %>/edit ">Edit T0-Do</a>
+    <form action="/todo/<%= todo._id %>?_method=DELETE" method="POST">
+        <button>Delete To-Do</button>
+    </form>
+    <h6><a href="/todo">ALL TO-DO'S</a></h6>
