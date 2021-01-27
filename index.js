@@ -59,7 +59,7 @@ app.get("/todo/:id/edit", asyncWrapper(async (req,res) => {
 app.patch("/todo/:id", asyncWrapper(async (req,res) => {
     const { id } = req.params;
     const newTodo =  req.sanitize(req.body.newTodo);
-    const foundTodo = await Todo.findByIdAndUpdate(id, {todo : newTodo});
+    const foundTodo = await Todo.findByIdAndUpdate(id, {todo : newTodo}, {runValidators : true});
     res.redirect("/todo");
 }))
 
@@ -71,10 +71,11 @@ app.delete("/todo/:id", asyncWrapper(async (req,res) => {
 
 app.use((err,req,res,next) => {
    const {message="Something went wrong", status= 500} = err;
-   res.status(status).send(message);
+   res.status(status).render("todo/error",{message});
 })
 
+const port = process.env.PORT || 3000;
 
-app.listen(3000,() => {
+app.listen( port ,() => {
     console.log("server up!!!!!")
 })
