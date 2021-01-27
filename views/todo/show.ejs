@@ -1,10 +1,17 @@
 <% layout('layout/boilerplate') -%>
-    <h1>
-        <%= todo.todo %>
-    </h1>
 
-    <a href="/todo/<%= todo._id %>/edit ">Edit T0-Do</a>
-    <form action="/todo/<%= todo._id %>?_method=DELETE" method="POST">
-        <button>Delete To-Do</button>
-    </form>
-    <h6><a href="/todo">ALL TO-DO'S</a></h6>
+    <div class="container">
+        <h6 class="my-3">To-Do item</h6>
+        <div class="card">
+            <div class="card-body">
+                <h1 class="card-title mb-5">
+                    <%= todo.todo %>
+                </h1>
+                <a href="/todo/<%= todo._id %>/edit " class="btn btn-sm btn-warning">Edit item</a>
+                <form style="display: inline" action="/todo/<%= todo._id %>?_method=DELETE" method="POST">
+                    <button class="btn btn-sm btn-danger">Delete item</button>
+                </form>
+                <a href="/todo" class="btn btn-sm btn-primary">ALL items</a>
+            </div>
+        </div>
+    </div>

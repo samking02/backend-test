@@ -1,8 +1,12 @@
 <% layout('layout/boilerplate') -%>
-    <h1>Edit Todo</h1>
-    <form action="/todo/<%= todo._id %>?_method=PATCH" method="POST">
-        <input type="text" name="newTodo" placeholder="Input Todo" value="<%= todo.todo %> ">
-        <button>Update To-do</button>
+    <h1>Edit item</h1>
+    <form action="/todo/<%= todo._id %>?_method=PATCH" method="POST" class="mb-2">
+        <div class="form-group mb-2">
+            <label for="newTodo">Edit Item</label>
+            <input id="newTodo" type="text" name="newTodo" placeholder="Input Todo" value="<%= todo.todo %>"
+                class="form-control">
+        </div>
+        <button class="btn btn-primary">Update To-do</button>
     </form>
 
     <h6><a href="/todo">ALL TO-DO'S</a></h6>

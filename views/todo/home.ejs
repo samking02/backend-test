@@ -1,17 +1,21 @@
 <% layout('layout/boilerplate') -%>
-    <h1>SHOWING ALL TO-DOS</h1>
-    <a href="/todo/new">Add New TO-DO</a>
-    <ul>
+    <h1>To Do items</h1>
+    <ul class="list-group mb-2">
         <% for( todo of todoList){ %>
-            <li>
-                <%= todo.todo%>
-                    <a href="/todo/<%=todo._id%>">more detail</a>
-
-                    <a href="/todo/<%=todo._id%>/edit"><i class="fas fa-pen"></i></a>
-
-                    <form action="/todo/<%=todo._id%>?_method=DELETE" method="POST">
-                        <button><i class="fas fa-trash-alt"></i></button>
+            <li class="list-group-item">
+                <span class="lead">
+                    <a href="/todo/<%=todo._id%>" class="link">
+                        <%= todo.todo%>
+                    </a>
+                </span>
+                <div class="pull-right">
+                    <a href="/todo/<%=todo._id%>/edit" class="btn btn-sm btn-warning">Edit</a>
+                    <form style="display: inline" action="/todo/<%=todo._id%>?_method=DELETE" method="POST">
+                        <button class="btn btn-sm btn-danger">Delete</button>
                     </form>
+                </div>
+                <div class="clearfix"></div>
             </li>
             <% } %>
     </ul>
+    <a href="/todo/new" class="btn btn-primary">New items</a>
